@@ -18,14 +18,22 @@ type Collector struct {
 /*
 Create new collector for the named api. Metrics will be labeled with "api". The following prometheus metrics are automatically registered on reg, or the default prometheus registerer if reg is nil:
 
-	sherpa_requests_total             calls, per function
-	sherpa_errors_total               error responses (including server errors), per function
-	sherpa_servererrors_total         server error responses, per function
-	sherpa_protocol_errors_total      incorrect requests
-	sherpa_bad_function_total         unknown functions called
-	sherpa_javascript_request_total   requests to sherpa.js
-	sherpa_json_request_total         requests to sherpa.json
-	sherpa_requests_duration_seconds  histogram for .01, .05, .1, .2, .5, 1, 2, 4, 8, 16, per function
+	sherpa_requests_total
+		calls, per function
+	sherpa_errors_total
+		error responses (including server errors), per function
+	sherpa_servererrors_total
+		server error responses, per function
+	sherpa_protocol_errors_total
+		incorrect requests
+	sherpa_bad_function_total
+		unknown functions called
+	sherpa_javascript_request_total
+		requests to sherpa.js
+	sherpa_json_request_total
+		requests to sherpa.json
+	sherpa_requests_duration_seconds
+		histogram for .01, .05, .1, .2, .5, 1, 2, 4, 8, 16, per function
 */
 func NewCollector(api string, reg prometheus.Registerer) (*Collector, error) {
 	if reg == nil {
